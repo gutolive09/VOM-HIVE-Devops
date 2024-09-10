@@ -1,6 +1,6 @@
 package br.com.VomHive.VomHive.repository;
 
-import br.com.VomHive.VomHive.entity.Campaign;
+import br.com.VomHive.VomHive.model.Campaign;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
