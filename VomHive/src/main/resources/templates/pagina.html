@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Testes</title>
+</head>
+<body>
+<h1>Lista de Campanhas</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Detalhes</th>
+        <th>Status</th>
+        <th>Objetivo</th>
+        <th>Orçamento</th>
+        <th>Prazo</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop para exibir campanhas -->
+    <tr th:each="campaign : ${campaigns}">
+        <td th:text="${campaign.idCampaign}"></td>
+        <td th:text="${campaign.nmCampaign}"></td>
+        <td th:text="${#strings.abbreviate(campaign.details, 30)}"></td>
+        <td th:text="${campaign.status}"></td>
+        <td th:text="${campaign.objective}"></td>
+        <td th:text="${campaign.budget}"></td>
+        <td th:text="${campaign.term}"></td>
+        <td>
+            <!-- Link para excluir campanha -->
+            <a th:href="@{/campaign/delete/{id}(id=${campaign.idCampaign})}" onclick="return confirm('Você tem certeza que deseja excluir?');">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/campaign/new">Adicionar Nova Campanha</a>
+</body>
+</html>
