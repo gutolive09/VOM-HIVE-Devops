@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "TBL_PROFILE")
-@Data // Adiciona automaticamente getters, setters, toString, equals e hashCode
+@Data
 public class Profile {
 
     @Id
