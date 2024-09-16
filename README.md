@@ -14,7 +14,7 @@
 
 - Para pegar o arquivo, clone o repositório ná sua maquina utilizando o comando a seguir:
 ```
-git clone https://github.com/EcoNet-GlobalSolution/GlobalSolution-Java.git
+https://github.com/Mmateus106/Challenge-Sprint3.git
 ```
 - Ao abrir o projeto, crie um file ".env" na altura no projeto contendo os seguintes dados a seguir.
 - É necessário realizar este passo para realizar a conexão com o banco da oracle!
