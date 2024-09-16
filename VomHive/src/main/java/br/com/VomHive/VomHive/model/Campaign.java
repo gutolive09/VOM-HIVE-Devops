@@ -1,6 +1,9 @@
 package br.com.VomHive.VomHive.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +19,10 @@ public class Campaign {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCampaign;
 
+    @Size(min = 4, max = 255, message = "O nome da nova campanha deve ter, ao menos, 4 caracteres e, no máximo, 255")
     private String nmCampaign;
 
-    private byte[] details;
+    private String details;
 
     private String status;
 
@@ -26,7 +30,8 @@ public class Campaign {
 
     private double budget;
 
-    private String term;
+    @FutureOrPresent
+    private LocalDate term;
 
     //Relacionamentos (campaign -> company) e (campaign -> product)
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,12 +42,13 @@ public class Campaign {
     @JoinColumn(name = "id_product")
     private Product product;
 
+    @PastOrPresent
     private LocalDate dtRegister;
 
     public Campaign() {
     }
 
-    public Campaign(Long idCampaign, String nmCampaign, byte[] details, String status, String objective, double budget, String term, Company company, Product product, LocalDate dtRegister) {
+    public Campaign(Long idCampaign, String nmCampaign, String details, String status, String objective, double budget, LocalDate term, Company company, Product product, LocalDate dtRegister) {
         this.idCampaign = idCampaign;
         this.nmCampaign = nmCampaign;
         this.details = details;
@@ -72,11 +78,11 @@ public class Campaign {
         this.nmCampaign = nmCampaign;
     }
 
-    public byte[] getDetails() {
+    public String getDetails() {
         return details;
     }
 
-    public void setDetails(byte[] details) {
+    public void setDetails(String details) {
         this.details = details;
     }
 
@@ -104,11 +110,11 @@ public class Campaign {
         this.budget = budget;
     }
 
-    public String getTerm() {
+    public LocalDate getTerm() {
         return term;
     }
 
-    public void setTerm(String term) {
+    public void setTerm(LocalDate term) {
         this.term = term;
     }
 
@@ -135,4 +141,5 @@ public class Campaign {
     public void setDtRegister(LocalDate dtRegister) {
         this.dtRegister = dtRegister;
     }
+
 }

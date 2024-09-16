@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Página de Testes</title>
+    <title>Lista de Perfis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,40 +69,33 @@
     </style>
 </head>
 <body>
-<h1>Lista de Campanhas</h1>
+<h1>Lista de Perfis</h1>
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Nome</th>
-        <th>Detalhes</th>
+        <th>Nome de Usuário</th>
+        <th>Permissão</th>
         <th>Status</th>
-        <th>Objetivo</th>
-        <th>Orçamento</th>
-        <th>Data de registro</th>
-        <th>Prazo</th>
-        <th>Ações</th>>
+        <th>Data de Registro</th>
+        <th>Ações</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="campaign : ${campaigns}">
-        <td th:text="${campaign.idCampaign}"></td>
-        <td th:text="${campaign.nmCampaign}"></td>
-        <td th:text="${campaign.details}"></td>
-        <td th:text="${campaign.status}"></td>
-        <td th:text="${campaign.objective}"></td>
-        <td th:text="${campaign.budget}"></td>
-        <td th:text="${campaign.dtRegister}"></td>
-        <td th:text="${campaign.term}"></td>
+    <tr th:each="profile : ${profiles}">
+        <td th:text="${profile.idUser}"></td>
+        <td th:text="${profile.nmUser}"></td>
+        <td th:text="${profile.permission}"></td>
+        <td th:text="${profile.status}"></td>
+        <td th:text="${profile.dtRegister}"></td>
         <td class="actions">
-
-            <a th:href="@{/campaign/deletar/{id}(id=${campaign.idCampaign})}" onclick="return confirm('Você tem certeza que deseja excluir?');">Excluir</a>
-            <a th:href="@{/campaign/editar/{id}(id=${campaign.idCampaign})}">Editar</a>
-            <a th:href="@{/campaign/{id}(id=${campaign.idCampaign})}">Ver</a>
+            <a th:href="@{/profile/deletar/{id}(id=${profile.idUser})}" onclick="return confirm('Você tem certeza que deseja excluir?');">Excluir</a>
+            <a th:href="@{/profile/editar/{id}(id=${profile.idUser})}">Editar</a>
+            <a th:href="@{/profile/{id}(id=${profile.idUser})}">Ver</a>
         </td>
     </tr>
     </tbody>
 </table>
-<a class="add-button" href="/campaign/nova">Adicionar Nova Campanha</a>
+<a class="add-button" href="/profile/nova">Adicionar Novo Perfil</a>
 </body>
 </html>

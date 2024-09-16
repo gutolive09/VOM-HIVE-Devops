@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Adicionar Campanha</title>
+    <title>Editar Campanha</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,27 +19,22 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
-            margin: auto;
+            margin: 0 auto;
         }
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
         }
-        input[type="text"], input[type="number"], textarea {
-            width: calc(100% - 22px);
+        input, textarea {
+            width: 100%;
             padding: 10px;
-            margin-bottom: 12px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            height: 100px;
-            resize: vertical;
+            margin-bottom: 12px;
         }
         button {
-            background-color: #4CAF50;
+            background-color: #007BFF;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -47,11 +42,9 @@
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
         a {
-            display: inline-block;
-            margin-top: 10px;
             color: #007BFF;
             text-decoration: none;
         }
@@ -61,8 +54,8 @@
     </style>
 </head>
 <body>
-<h1>Adicionar Nova Campanha</h1>
-<form action="#" th:action="@{/campaign/adicionar}" th:object="${campaign}" method="post">
+<h1>Editar Campanha</h1>
+<form th:action="@{/campaign/atualizar/{id}(id=${campaign.idCampaign})}" th:object="${campaign}" method="post">
     <label for="nmCampaign">Nome da Campanha:</label>
     <input type="text" id="nmCampaign" th:field="*{nmCampaign}" />
 
@@ -84,8 +77,8 @@
     <label for="term">Prazo:</label>
     <input type="date" id="term" th:field="*{term}" />
 
-    <button type="submit">Adicionar</button>
+    <button type="submit">Atualizar Campanha</button>
+    <a href="/teste">Cancelar</a>
 </form>
-<a href="/teste">Voltar</a>
 </body>
 </html>

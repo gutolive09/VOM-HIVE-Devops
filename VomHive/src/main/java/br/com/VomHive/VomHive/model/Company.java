@@ -1,6 +1,7 @@
 package br.com.VomHive.VomHive.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCompany;
 
+    @Size(min = 4, max = 255, message = "O nome da nova comapanhia deve ter, ao menos, 4 caracteres e, no máximo, 255")
     private String nmCompany;
 
     private String cnpj;

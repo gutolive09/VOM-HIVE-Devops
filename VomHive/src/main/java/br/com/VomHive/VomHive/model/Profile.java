@@ -1,62 +1,45 @@
 package br.com.VomHive.VomHive.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
+import jakarta.validation.constraints.*;
+import lombok.Data;
 import java.time.LocalDate;
-
 
 @Entity
 @Table(name = "TBL_PROFILE")
+@Data // Adiciona automaticamente getters, setters, toString, equals e hashCode
 public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
 
+    @Size(min = 4, max = 100, message = "O nome de usuário deve ter no mínimo 4 letras, e no máximo 100")
     private String nmUser;
 
+    @Size(min = 8, max = 20, message = "A senha deve ter entre 8 e 20 caracteres")
+    @NotNull(message = "A senha não pode ser nula")
+    @NotEmpty(message = "A senha não pode estar vazia")
     private String passUser;
 
     private String permission;
 
     private String status;
 
+    @Past
     private LocalDate dtRegister;
 
+    // Construtor padrão é necessário para JPA
     public Profile() {
     }
 
+    // Construtor com parâmetros
     public Profile(Long idUser, String nmUser, String passUser, String permission, String status, LocalDate dtRegister) {
         this.idUser = idUser;
         this.nmUser = nmUser;
         this.passUser = passUser;
         this.permission = permission;
         this.status = status;
-        this.dtRegister = dtRegister;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
-
-    public void setNmUser(String nmUser) {
-        this.nmUser = nmUser;
-    }
-
-    public void setPassUser(String passUser) {
-        this.passUser = passUser;
-    }
-
-    public void setPermission(String permission) {
-        this.permission = permission;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setDtRegister(LocalDate dtRegister) {
         this.dtRegister = dtRegister;
     }
 }
