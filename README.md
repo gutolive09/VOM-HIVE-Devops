@@ -30,3 +30,5 @@ mvn spring-boot:run
 - Lembrando que para dar certo, é necessário o Java Runtime estar atualizado, em sua versão mais recente, para ser compátivel com o plugin do maven
 
 # Links do vídeo Pitch / Aplicação
+
+- https://youtu.be/ytQHsWgucLo
