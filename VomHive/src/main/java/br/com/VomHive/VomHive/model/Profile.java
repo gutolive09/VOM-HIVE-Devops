@@ -24,7 +24,7 @@ public class Profile {
 
     private String permission;
 
-    private String status;
+    private Status status;
 
     @Past
     private LocalDate dtRegister;
@@ -34,7 +34,7 @@ public class Profile {
     }
 
     // Construtor com parâmetros
-    public Profile(Long idUser, String nmUser, String passUser, String permission, String status, LocalDate dtRegister) {
+    public Profile(Long idUser, String nmUser, String passUser, String permission, Status status, LocalDate dtRegister) {
         this.idUser = idUser;
         this.nmUser = nmUser;
         this.passUser = passUser;

@@ -59,29 +59,36 @@
 <h1>Editar Perfil</h1>
 <div class="form-container">
     <form th:action="@{/profile/atualizar/{id}(id=${profile.idUser})}" th:object="${profile}" method="post">
+        <!-- Inclua o ID do perfil para identificar qual perfil está sendo atualizado -->
         <input type="hidden" th:field="*{idUser}" />
+
         <div class="form-group">
             <label for="nmUser">Nome de Usuário</label>
             <input type="text" id="nmUser" th:field="*{nmUser}" />
             <div class="error-message" th:if="${#fields.hasErrors('nmUser')}" th:errors="*{nmUser}"></div>
         </div>
+
         <div class="form-group">
             <label for="passUser">Senha</label>
             <input type="password" id="passUser" th:field="*{passUser}" />
             <div class="error-message" th:if="${#fields.hasErrors('passUser')}" th:errors="*{passUser}"></div>
         </div>
+
         <div class="form-group">
             <label for="permission">Permissão</label>
             <input type="text" id="permission" th:field="*{permission}" />
         </div>
+
         <div class="form-group">
             <label for="status">Status</label>
             <input type="text" id="status" th:field="*{status}" />
         </div>
+
         <div class="form-group">
             <label for="dtRegister">Data de Registro</label>
             <input type="date" id="dtRegister" th:field="*{dtRegister}" />
         </div>
+
         <div class="form-group">
             <button type="submit">Salvar</button>
         </div>

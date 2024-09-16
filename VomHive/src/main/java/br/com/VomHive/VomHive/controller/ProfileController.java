@@ -48,6 +48,7 @@ public class ProfileController {
     }
 
     // Mostrar formulário para editar perfil
+    // Mostrar formulário para editar perfil
     @GetMapping("/profile/editar/{id}")
     public String showEditProfileForm(@PathVariable("id") Long id, Model model) {
         Profile profile = profileRep.findById(id)
@@ -58,34 +59,24 @@ public class ProfileController {
 
     // Atualizar perfil
     @PostMapping("/profile/atualizar/{id}")
-    public ModelAndView updateProfile(@PathVariable("id") Long id, @Valid @ModelAttribute("profile") Profile updatedProfile, BindingResult result) {
-        ModelAndView mv = new ModelAndView();
-
-        // Verifica se existem erros de validação
+    public String updateProfile(@PathVariable("id") Long id, @Valid @ModelAttribute("profile") Profile updatedProfile, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            // Adiciona o perfil ao ModelAndView e redireciona para a página de edição
-            mv.setViewName("editProfile");
-            mv.addObject("profile", updatedProfile);
-            return mv;
+            // Se houver erros de validação, voltar para a página de edição
+            return "editProfile";
         }
 
-        // Busca o perfil existente
         Profile existingProfile = profileRep.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
 
-        // Atualiza o perfil existente com os dados do perfil atualizado
+        // Atualiza os campos do perfil existente
         existingProfile.setNmUser(updatedProfile.getNmUser());
         existingProfile.setPassUser(updatedProfile.getPassUser());
         existingProfile.setPermission(updatedProfile.getPermission());
         existingProfile.setStatus(updatedProfile.getStatus());
         existingProfile.setDtRegister(updatedProfile.getDtRegister());
 
-        // Salva as alterações
         profileRep.save(existingProfile);
-
-        // Redireciona para a lista de perfis
-        mv.setViewName("redirect:/profiles");
-        return mv;
+        return "redirect:/profiles"; // Redireciona para a lista de perfis após a atualização
     }
 
 

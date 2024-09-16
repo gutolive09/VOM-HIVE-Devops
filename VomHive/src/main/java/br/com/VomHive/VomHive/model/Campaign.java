@@ -24,7 +24,8 @@ public class Campaign {
 
     private String details;
 
-    private String status;
+    @Enumerated
+    private Status status;
 
     private String objective;
 
@@ -48,7 +49,7 @@ public class Campaign {
     public Campaign() {
     }
 
-    public Campaign(Long idCampaign, String nmCampaign, String details, String status, String objective, double budget, LocalDate term, Company company, Product product, LocalDate dtRegister) {
+    public Campaign(Long idCampaign, String nmCampaign, String details, Status status, String objective, double budget, LocalDate term, Company company, Product product, LocalDate dtRegister) {
         this.idCampaign = idCampaign;
         this.nmCampaign = nmCampaign;
         this.details = details;
@@ -60,7 +61,6 @@ public class Campaign {
         this.product = product;
         this.dtRegister = dtRegister;
     }
-
 
     public Long getIdCampaign() {
         return idCampaign;
@@ -86,11 +86,11 @@ public class Campaign {
         this.details = details;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -141,5 +141,4 @@ public class Campaign {
     public void setDtRegister(LocalDate dtRegister) {
         this.dtRegister = dtRegister;
     }
-
 }
