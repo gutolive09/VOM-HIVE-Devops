@@ -35,4 +35,4 @@ Lembrando que é essencial ter o docker instalado para executar a aplicação lo
 
 # Links do vídeo Pitch / Aplicação
 
-- 
+- https://youtu.be/BWO1JMqFGtc
